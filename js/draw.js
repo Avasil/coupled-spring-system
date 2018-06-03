@@ -1,26 +1,32 @@
+let iteration = 0;
+let solution = {};
+let play = true;
+let cnv;
 
-var iteration = 0;
-var solution = {};
-var play = true;
-var cnv;
-
-var cnvWidth = 1424;
-var cnvHeight = 600;
-// var p = [];
+let cnvWidth = 1424;
+let cnvHeight = 600;
+let p = [];
 
 
-// let m1 = 0;
-// let m2 = 0;
-// let k1 = 0;
-// let k2 = 0;
-// let L1 = 0;
-// let L2 = 0;
-// let b1 = 0;
-// let b2 = 0;
+let m1 = 0;
+let m2 = 0;
+let k1 = 0;
+let k2 = 0;
+let L1 = 0;
+let L2 = 0;
+let b1 = 0;
+let b2 = 0;
+
+let myFont;
+
+function preload() {
+    myFont = loadFont('assets/SourceSansPro-It.otf');
+}
+
 
 function setup() {
-    submitData()
-
+    submitData();
+    textFont(myFont);
     cnv = createCanvas(cnvWidth, cnvHeight);  // Size must be the first statement
     cnv.parent('sketch-holder');
 
@@ -45,8 +51,8 @@ function draw() {
     leftBlockWidth = m1 * scale;
     rightBlockWidth = m2 * scale;
 
-    leftBlockHeight = 1 * scale;
-    rightBlockHeight = 1 * scale;
+    leftBlockHeight = scale;
+    rightBlockHeight = scale;
 
     let transitionY = 300;
     let transitionX = L1 * scale;
@@ -73,10 +79,10 @@ function draw() {
     fill(160, 82, 45)
     rect(0, transitionY + leftBlockHeight, cnvWidth, cnvHeight);
 
-    text("time: " + (iteration/10) + " s \n" +
-        "position of 1st " + solution.y[iteration][0] + "m\n" +
-        "position of 2nd " + solution.y[iteration][2] + "m\n"
-        , cnvWidth/2, 10)
+    text("time: " + (iteration / 10) + " s \n" +
+        "position of 1st " + parseFloat(solution.y[iteration][0]).toFixed(2) + " m\n" +
+        "position of 2nd " + parseFloat(solution.y[iteration][2]).toFixed(2) + " m\n"
+        , 10, 30)
 
 }
 
