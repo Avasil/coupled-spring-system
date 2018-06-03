@@ -4,7 +4,7 @@ let play = true;
 let cnv;
 
 let cnvWidth = 1424;
-let cnvHeight = 600;
+let cnvHeight = 545;
 let p = [];
 
 
@@ -38,7 +38,7 @@ function draw() {
     if (!play) {
         return
     }
-    background(5);   // Set the background to black
+    background("#343a40");   // Set the background to black
 
     iteration++;
 
@@ -68,15 +68,15 @@ function draw() {
 
 
     // Draw left block
-    fill(255, 204, 0);
+    fill("#fff");
     rect(x1, transitionY, leftBlockWidth, leftBlockHeight);
 
     // Draw right block
-    fill(204, 0, 255);
+    fill("#007bff");
     rect(x2, transitionY, rightBlockWidth, rightBlockHeight);
 
     //draw ground
-    fill(160, 82, 45)
+    fill("#ababab")
     rect(0, transitionY + leftBlockHeight, cnvWidth, cnvHeight);
 
     text("time: " + (iteration / 10) + " s \n" +

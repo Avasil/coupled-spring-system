@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
     <title>Coupled spring mass system</title>
+    <link rel="stylesheet" href="./vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="vendor/numeric-1.2.6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
     <link rel="stylesheet" href="css/main.css">
-
 </head>
 <body>
 <script src="js/main.js"></script>
@@ -14,62 +16,114 @@
 
 <div class="menu">
 
-    <header>
-        Coupled spring system
-    </header>
-    <div >
-        <form class="form" id="form">
-            <label for="mass1">Mass of 1st object</label>
-            <input name="mass1" id="mass1" type="number" value="1.0">
-            <label for="mass2">Mass of 2nd object</label>
-            <input name="mass2" id="mass2" type="number" value="1.5">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="navbar-brand">Coupled spring system</div>
+        <span class="navbar-text">Created by Piotr Gawryś and Dawid Siedlarz</span>
+    </nav>
 
-            <label for="constant1">1st spring constant</label>
-            <input name="constant1" id="constant1" type="number" value="8.0">
-            <label for="constant2">2nd spring constant</label>
-            <input name="constant2" id="constant2" type="number" value="40.0">
+    <div class="wrap">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="controls-wrap">
+                    <form class="form" id="form">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="mass1">Mass of 1st object</label>
+                                    <input class="form-control" name="mass1" id="mass1" type="number" value="1.0">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="mass2">Mass of 2nd object</label>
+                                    <input class="form-control" name="mass2" id="mass2" type="number" value="1.5">
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="length1">Length of 1st spring</label>
-            <input name="length1" id="length1" type="number" value="0.8">
-            <label for="length2">Length of 2nd spring</label>
-            <input name="length2" id="length2" type="number" value="1.0">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="constant1">1st spring constant</label>
+                                    <input class="form-control" name="constant1" id="constant1" type="number"
+                                           value="8.0">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="constant2">2nd spring constant</label>
+                                    <input class="form-control" name="constant2" id="constant2" type="number"
+                                           value="40.0">
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="friction1">Friction of 1st object</label>
-            <input name="friction1" id="friction1" type="number" value="0.8">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="length1">Length of 1st spring</label>
+                                    <input class="form-control" name="length1" id="length1" type="number" value="0.8">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="length2">Length of 2nd spring</label>
+                                    <input class="form-control" name="length2" id="length2" type="number" value="1.0">
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="friction2">Friction of 2nd object</label>
-            <input name="friction2" id="friction2" type="number" value="0.5">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="friction1">Friction of 1st object</label>
+                                    <input class="form-control" name="friction1" id="friction1" type="number"
+                                           value="0.8">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="friction2">Friction of 2nd object</label>
+                                    <input class="form-control" name="friction2" id="friction2" type="number"
+                                           value="0.5">
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="position1">Position of 1st object</label>
-            <input name="position1" id="position1" type="number" value="0.5">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="position1">Position of 1st object</label>
+                                    <input class="form-control" name="position1" id="position1" type="number"
+                                           value="0.5">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="position2">Position of 2nd object</label>
+                                    <input class="form-control" name="position2" id="position2" type="number"
+                                           value="2.25">
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="position2">Position of 2nd object</label>
-            <input name="position2" id="position2" type="number" value="2.25">
+                        <button class="btn btn-dark btn-block" type=button onclick="submitData()">SUBMIT</button>
+                    </form>
+                    <div class="buttons">
+                        <button class="btn btn-success btn-sm" onclick="start();">PLAY <i class="fa fa-play"></i></button>
+                        <button class="btn btn-danger btn-sm" onclick="stop();">STOP <i class="fa fa-pause"></i></button>
+                        <button class="btn btn-primary btn-sm" onclick="restart();">RESTART</button>
+                    </div>
+                </div>
+            </div>
 
-
-            <button type=button onclick="submitData()">Submit</button>
-
-        </form>
+            <div class="col-xs-12 col-md-8">
+                <div id="sketch-holder">
+                    <!-- Our sketch will go here! -->
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="buttons">
-        <button onclick="start();">
-            play
-        </button>
-        <button onclick="stop();">
-            stop
-        </button>
-        <button onclick="restart();">
-            restart
-        </button>
-    </div>
-
-    <div id="sketch-holder">
-        <!-- Our sketch will go here! -->
-    </div>
-
-    <footer class="createdBy">
-        Created by Piotr Gawryś and Dawid Siedlarz
-    </footer>
 </div>
 </body>
 </html>

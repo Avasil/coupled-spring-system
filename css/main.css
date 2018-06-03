@@ -1,87 +1,10 @@
-* {
-    box-sizing: border-box;
-}
-
-form {
-    padding: 1em;
-    background: #f9f9f9;
-    border: 1px solid #c1c1c1;
-    margin-top: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1em;
-}
-form input {
-    margin-bottom: 1rem;
-    background: #fff;
-    border: 1px solid #9c9c9c;
-}
-form button {
-    background: lightgrey;
-    padding: 0.7em;
-    border: 0;
-}
-form button:hover {
-    background: gold;
-}
-
-label {
-    text-align: right;
-    display: block;
-    padding: 0.5em 1.5em 0.5em 0;
-}
-
-input {
-    width: 100%;
-    padding: 0.7em;
-    margin-bottom: 0.5rem;
-}
-input:focus {
-    outline: 3px solid gold;
-}
-
-@media (min-width: 400px) {
-    form {
-        overflow: hidden;
-    }
-
-    label {
-        float: left;
-        width: 200px;
-    }
-
-    input {
-        float: left;
-        width: calc(100% - 200px);
-    }
-
-    button {
-        float: right;
-        width: calc(100% - 200px);
-    }
-}
-
-.buttons {
-    margin: auto;
-    width: 100%;
-    display: block;
-    text-align: center;
-    padding: 16px;
-}
-.buttons button {
-    width: 20%;
-    float: none;
-}
-
 .p5Canvas {
     display: block;
     margin: auto;
 }
 
 body {
-    background-image: url("../img/back.jpeg");
-    background-repeat: repeat;
+    background: rgba(179, 179, 179, 0.54);
 }
 
 .p5Canvas::after {
@@ -91,15 +14,41 @@ body {
     font-weight: bold;
 }
 
-.createdBy {
-    width: 100%;
-    text-align: right;
-    padding: 16px;
-
+.wrap {
+    padding: 15px;
 }
 
-header {
-    text-align: center;
-    font-size: 2em;
-    margin: 16px;
+.controls-wrap {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #80808038;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #80808038;
+}
+
+.buttons button {
+    margin-right: 5px;
+}
+
+.buttons button:last-of-type {
+    margin-right: 0;
+}
+
+#sketch-holder {
+    overflow-x: auto;
+    border-radius: 5px;
+}
+
+button i {
+    font-size: 12px;
+    margin-left: 5px;
 }
