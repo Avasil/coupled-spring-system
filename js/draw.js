@@ -19,24 +19,34 @@ function draw() {
         iteration = 0;
     }
 
-    let scale = 50;
+    let scale = 75;
+    
+    leftBlockWidth = 2 * scale;
+    rightBlockWidth = 1.5 * scale;
+
+    leftBlockHeight = 1 * scale;
+    rightBlockHeight = 1 * scale;
+
     let transitionY = 300;
-    let x = Math.round(solution.x[iteration] * scale);
-    let y0 = Math.round(solution.y[iteration][0] * scale) + transitionY;
-    let y1 = Math.round(solution.y[iteration][1] * scale) + transitionY;
-    let y2 = Math.round(solution.y[iteration][2] * scale) + transitionY;
-    let y3 = Math.round(solution.y[iteration][3] * scale) + transitionY;
+    let transitionX = L1 * scale;
+    let transitionX2 = (L1 + L2) * scale + leftBlockWidth;
 
+    let x1 = Math.round(solution.y[iteration][0] * scale) + transitionX;
+    let x2 = Math.round(solution.y[iteration][2] * scale) + transitionX2 + leftBlockWidth;
 
-    fill(200);
-    line(0, transitionY, 1424, transitionY);
+    // Draw left spring
+    stroke(153);
+    line(0, transitionY + leftBlockHeight / 2, x1, transitionY + leftBlockHeight / 2);
 
+    // Draw right spring
+    stroke(153);
+    line(x1 + rightBlockWidth / 2, transitionY + rightBlockHeight / 2, x2, transitionY + rightBlockHeight / 2);
+
+    // Draw left block
     fill(255, 204, 0);
-    rect(x, y0, 10, 10);
-    fill(0, 204, 255);
-    rect(x, y1, 10, 10);
+    rect(x1, transitionY, leftBlockWidth, leftBlockHeight);
+
+    // Draw right block
     fill(204, 0, 255);
-    rect(x, y2, 10, 10);
-    fill(100, 35, 212);
-    rect(x, y3, 10, 10);
+    rect(x2, transitionY, rightBlockWidth, rightBlockHeight);
 }

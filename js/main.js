@@ -55,7 +55,3 @@ let y2 = 0.0;
 
 let p = [m1, m2, k1, k2, L1, L2, b1, b2];
 let w0 = [x1, y1, x2, y2];
-
-// let solution = numeric.dopri(0, 100, w0, springs(p));
-//
-// console.log(solution);
