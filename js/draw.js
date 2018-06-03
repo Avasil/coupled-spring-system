@@ -73,7 +73,10 @@ function draw() {
     fill(160, 82, 45)
     rect(0, transitionY + leftBlockHeight, cnvWidth, cnvHeight);
 
-    text("time: " + (iteration/10) + " s", cnvWidth/2, 10)
+    text("time: " + (iteration/10) + " s \n" +
+        "position of 1st " + solution.y[iteration][0] + "m\n" +
+        "position of 2nd " + solution.y[iteration][2] + "m\n"
+        , cnvWidth/2, 10)
 
 }
 
@@ -134,10 +137,17 @@ function submitData() {
     b1 = Number(document.getElementById('friction1').value);
     b2 = Number(document.getElementById('friction2').value);
 
+    let x1 = Number(document.getElementById('position1').value);
+    let x2 = Number(document.getElementById('position2').value);
+
+    let y1 = 0.0;
+    let y2 = 0.0;
+    let w0 = [x1, y1, x2, y2];
+
     p = [m1, m2, k1, k2, L1, L2, b1, b2];
 
     solution = numeric.dopri(0, 100, w0, springs(p));
 
-    restart()
+    restart();
     return false;
 }

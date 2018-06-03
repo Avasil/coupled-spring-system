@@ -35,23 +35,3 @@ let springs = function (p) {
         return [x1_prime, y1_prime, x2_prime, y2_prime]
     };
 };
-
-let m1 = 1.0;
-let m2 = 1.5;
-
-let k1 = 8.0;
-let k2 = 40.0;
-
-let L1 = 0.5;
-let L2 = 1.0;
-
-let b1 = 0.8;
-let b2 = 0.5;
-
-let x1 = 0.5;
-let y1 = 0.0;
-let x2 = 2.25;
-let y2 = 0.0;
-
-let p = [m1, m2, k1, k2, L1, L2, b1, b2];
-let w0 = [x1, y1, x2, y2];
