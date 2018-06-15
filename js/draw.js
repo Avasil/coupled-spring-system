@@ -19,6 +19,60 @@ let b2 = 0;
 
 let myFont;
 
+
+var lineChartData = {
+    labels: [],
+    datasets: [{
+        label: 'First box',
+        borderColor: 'rgb(255, 255, 255)',
+        backgroundColor: 'rgb(255, 255, 255)',
+        yAxesID : "y-axis-1",
+        fill: false,
+        data: [
+
+        ],
+        pointRadius: 0,
+        yAxisID: 'y-axis-1',
+    }, {
+        label: 'Second box',
+        borderColor: 'rgb(0, 123, 255)',
+        backgroundColor: 'rgb(0, 123, 255)',
+        yAxesID : "y-axis-1",
+        fill: false,
+        data: [
+
+        ],
+        pointRadius: 0,
+        yAxisID: 'y-axis-1'
+    }],
+    options: {
+        elements: { point: { radius: 0 } },
+        scales: {
+            yAxes: [{
+                id: "y-axis-1",
+                type: 'linear',
+                ticks: {
+                    beginAtZero: true
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Position'
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Time'
+                }
+            }]
+        }
+    }
+};
+
+
 function preload() {
     myFont = loadFont('assets/SourceSansPro-It.otf');
 }
@@ -32,6 +86,13 @@ function setup() {
 
     stroke(255);     // Set line drawing color to white
     frameRate(30);
+
+
+    for (i=0; i < 600; i++) {
+        lineChartData.labels.push(i / 10)
+    }
+
+    loadChart()
 }
 
 function draw() {
@@ -43,7 +104,7 @@ function draw() {
     iteration++;
 
     if (iteration >= 600) {
-        iteration = 0;
+        play = false
     }
 
     let scale = 75;
@@ -84,6 +145,10 @@ function draw() {
         "position of 2nd " + parseFloat(solution.y[iteration][2]).toFixed(2) + " m\n"
         , 10, 30)
 
+    lineChartData.datasets[0].data.push(x1);
+    lineChartData.datasets[1].data.push(x2);
+
+    window.myLine.update();
 }
 
 function drawSpring(bend, x1, y1, x2, y2) {
@@ -157,3 +222,42 @@ function submitData() {
     restart();
     return false;
 }
+
+
+var loadChart = function() {
+
+    console.log("asdf");
+    var ctx = document.getElementById('canvas').getContext('2d');
+    window.myLine = Chart.Line(ctx, {
+        data: lineChartData,
+        options: {
+            responsive: true,
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Position of each box'
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
+            }
+        }
+    });
+};
+
+
