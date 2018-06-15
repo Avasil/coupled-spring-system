@@ -19,8 +19,11 @@ let b2 = 0;
 
 let myFont;
 
+let time = 120;
+
 
 var lineChartData = {
+    label: "test",
     labels: [],
     datasets: [{
         label: 'First box',
@@ -88,8 +91,8 @@ function setup() {
     frameRate(30);
 
 
-    for (i=0; i < 600; i++) {
-        lineChartData.labels.push(i / 10)
+    for (i=0; i < 999; i++) {
+        lineChartData.labels.push(parseFloat(i / (1000/time)).toFixed(2))
     }
 
     loadChart()
@@ -103,7 +106,7 @@ function draw() {
 
     iteration++;
 
-    if (iteration >= 600) {
+    if (iteration >= 999) {
         play = false
     }
 
@@ -140,7 +143,7 @@ function draw() {
     fill("#ababab")
     rect(0, transitionY + leftBlockHeight, cnvWidth, cnvHeight);
 
-    text("time: " + (iteration / 10) + " s \n" +
+    text("time: " + (parseFloat(iteration / (1000/time)).toFixed(2)) + " s \n" +
         "position of 1st " + parseFloat(solution.y[iteration][0]).toFixed(2) + " m\n" +
         "position of 2nd " + parseFloat(solution.y[iteration][2]).toFixed(2) + " m\n"
         , 10, 30)
@@ -195,6 +198,12 @@ function stop() {
 function restart() {
     play = true;
     iteration = 0
+    lineChartData.datasets[0].data = [];
+    lineChartData.datasets[1].data = [];
+
+    if (window.myLine) {
+        window.myLine.update();
+    }
 }
 
 function submitData() {
@@ -217,7 +226,7 @@ function submitData() {
 
     p = [m1, m2, k1, k2, L1, L2, b1, b2];
 
-    solution = numeric.dopri(0, 100, w0, springs(p));
+    solution = numeric.dopri(0, time, w0, springs(p));
 
     restart();
     return false;
