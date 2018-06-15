@@ -148,8 +148,8 @@ function draw() {
         "position of 2nd " + parseFloat(solution.y[iteration][2]).toFixed(2) + " m\n"
         , 10, 30)
 
-    lineChartData.datasets[0].data.push(x1);
-    lineChartData.datasets[1].data.push(x2);
+    lineChartData.datasets[0].data.push(parseFloat(solution.y[iteration][0]).toFixed(2));
+    lineChartData.datasets[1].data.push(parseFloat(solution.y[iteration][2]).toFixed(2));
 
     window.myLine.update();
 }
