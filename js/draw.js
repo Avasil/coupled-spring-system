@@ -241,6 +241,7 @@ var loadChart = function() {
         data: lineChartData,
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             hoverMode: 'index',
             stacked: false,
             title: {
@@ -255,7 +256,7 @@ var loadChart = function() {
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
 
@@ -267,6 +268,7 @@ var loadChart = function() {
             }
         }
     });
+
 };
 
 
