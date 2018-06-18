@@ -19,7 +19,7 @@ let b2 = 0;
 
 let myFont;
 
-let time = 120;
+let time = 60;
 
 
 var lineChartData = {
@@ -102,13 +102,14 @@ function draw() {
     if (!play) {
         return
     }
-    background("#343a40");   // Set the background to black
 
     iteration++;
 
-    if (iteration >= 999) {
-        play = false
+    if (iteration >= solution.y.length) {
+        return;
     }
+
+    background("#343a40");   // Set the background to black
 
     let scale = 75;
 
